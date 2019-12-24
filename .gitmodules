@@ -1,0 +1,3 @@
+[submodule "xdg-dbus-proxy"]
+	path = xdg-dbus-proxy
+	url = https://github.com/flatpak/xdg-dbus-proxy.git
