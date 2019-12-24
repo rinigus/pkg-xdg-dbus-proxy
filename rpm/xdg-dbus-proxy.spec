@@ -7,7 +7,7 @@ License:        LGPLv2+
 URL:            https://github.com/flatpak/xdg-dbus-proxy/
 Source0:        https://github.com/flatpak/xdg-dbus-proxy/releases/download/%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  docbook-style-xsl
+BuildRequires:  autoconf automake libtool
 BuildRequires:  gcc
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -22,10 +22,11 @@ part of the flatpak project, but it has been broken out as a standalone module
 to facilitate using it in other contexts.
 
 %prep
-%autosetup -p1
+%setup -q -n %{name}-%{version}/xdg-dbus-proxy
 
 %build
-%configure
+./autogen.sh
+%configure --disable-man
 %make_build
 
 %install
@@ -34,7 +35,6 @@ to facilitate using it in other contexts.
 %files
 %license COPYING
 %{_bindir}/xdg-dbus-proxy
-%{_mandir}/man1/xdg-dbus-proxy.1*
 
 %changelog
 * Thu Sep 19 2019 Kalev Lember <klember@redhat.com> - 0.1.2-1
