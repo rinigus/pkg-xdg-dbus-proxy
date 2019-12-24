@@ -8,6 +8,7 @@ URL:            https://github.com/flatpak/xdg-dbus-proxy/
 Source0:        https://github.com/flatpak/xdg-dbus-proxy/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  autoconf automake libtool
+BuildRequires:  autoconf-archive
 BuildRequires:  gcc
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -24,7 +25,7 @@ to facilitate using it in other contexts.
 %setup -q -n %{name}-%{version}/xdg-dbus-proxy
 
 %build
-./autogen.sh
+env NOCONFIGURE=1 ./autogen.sh
 %configure --disable-man
 %make_build
 
